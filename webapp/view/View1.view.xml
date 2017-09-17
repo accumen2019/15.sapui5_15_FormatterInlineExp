@@ -1,0 +1,33 @@
+<mvc:View controllerName="FormatterInlineExpFormatterInlineExp.controller.View1" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<App>
+		<pages>
+			<Page title="{i18n>title}">
+				<content>
+					<List id="productList" items="{path: 'Model>/ProductSet', sorter:{ path: 'Category', group:true } }">
+						<headerToolbar>
+							<Toolbar>
+								<Title text="Products"/>
+							</Toolbar>
+						</headerToolbar>
+						<items>
+							<ObjectListItem title="{Model>Name}" number="{Model>Price}" numberUnit="{Model>CurrencyCode}" intro="{Model>ProductID}"
+							numberState= "{= ${Model>Price} > 250 ? 'Error' : 'Success' }">
+							<firstStatus>
+								<ObjectStatus text="{Model>WeightMeasure}{Model>WeightUnit}"></ObjectStatus>
+							</firstStatus>	
+							<secondStatus>
+								<ObjectStatus text="
+								{ parts: [
+								{path: 'Model>WeightUnit'},
+								{path:'Model>WeightMeasure'}],
+								formatter:'.Formatter.delivery'}"/>
+							</secondStatus>	
+							</ObjectListItem>
+						</items>
+					</List>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
